@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Monitor de Sensores</title>
+    <style>
+      body { font-family: system-ui, sans-serif; max-width: 680px; margin: 4rem auto; padding: 0 1rem; color: #24242e; }
+      button { background: #4f3292; border: 0; border-radius: .25rem; color: white; cursor: pointer; font: inherit; padding: .7rem 1rem; }
+      pre { background: #f2eef9; border-radius: .25rem; min-height: 3rem; padding: 1rem; white-space: pre-wrap; }
+    </style>
+  </head>
+  <body>
+    <h1>Monitor de sensores</h1>
+    <p>Esta página precisa consultar a API de status pela rede interna do Docker Compose.</p>
+    <button id="consultar">Consultar sensores</button>
+    <pre id="resultado">Aguardando consulta.</pre>
+    <script>
+      const resultado = document.querySelector("#resultado");
+      document.querySelector("#consultar").addEventListener("click", async () => {
+        resultado.textContent = "Consultando /api/status...";
+        try {
+          const resposta = await fetch("/api/status");
+          resultado.textContent = JSON.stringify(await resposta.json(), null, 2);
+        } catch (erro) {
+          resultado.textContent = `Falha: ${erro.message}`;
+        }
+      });
+    </script>
+  </body>
+</html>

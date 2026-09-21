@@ -1,0 +1,13 @@
+# Complete este arquivo com os dois serviços da aplicação.
+#
+# Requisitos:
+# - serviço frontend: build em ./frontend e porta 8081:80 publicada para o host;
+# - serviço api: build em ./api e sem publicação de porta para o host;
+# - frontend deve declarar que depende de api.
+#
+# Use "docker compose config" antes de executar a aplicação.
+
+services:
+  # TODO: defina frontend
+
+  # TODO: defina api
