@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Imagem base que será utilizada para criar o container
 FROM python:3.12-slim
 
@@ -16,3 +17,16 @@ EXPOSE 5050
 
 # Ainda não é um servidor de produção.
 CMD ["python", "main.py"]
+=======
+FROM python:3.12-slim
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 5050
+
+CMD ["python", "main.py"]
+>>>>>>> 465d113a3c2dd30491d8863de84f3c3e17318866
