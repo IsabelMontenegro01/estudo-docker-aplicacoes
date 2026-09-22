@@ -1,0 +1,22 @@
+services:
+  frontend:
+    build:
+      context: ../02-calculadora-flask-react/frontend
+    ports:
+      - "8081:80"
+    depends_on:
+      - api
+    networks:
+      - calculadora-net
+
+  api:
+    build:
+      context: ./api
+    expose:
+      - "5000"
+    networks:
+      - calculadora-net
+
+networks:
+  calculadora-net:
+    driver: bridge
